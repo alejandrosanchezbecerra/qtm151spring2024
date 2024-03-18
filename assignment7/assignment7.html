@@ -15052,13 +15052,13 @@ driverId             int64
 constructorId        int64
 number              object
 grid                 int64
-position            object
+position           float64
 positionText        object
 positionOrder        int64
 points             float64
 laps                 int64
 time                object
-milliseconds        object
+milliseconds       float64
 fastestLap          object
 rank                object
 fastestLapTime      object
@@ -15209,7 +15209,7 @@ Name: milliseconds, Length: 25840, dtype: float64</pre>
 <p>(d) Groupby + Aggregate</p>
 <p><font size = "3"></p>
 <ul>
-<li>Compute the mean and standard deviation of "position", <br>
+<li>Compute the mean and standard deviation of "laps", <br>
 grouping by "constructorId". Store the new dataset <br>
 as "df_aggCon_pos"</li>
 <li>Sort the aggregate dataset in decending <br>
@@ -15229,15 +15229,11 @@ order of mean laps using ".sort_values()"</li>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write your own code</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"position"</span><span class="p">])</span>
-
-<span class="c1"># Switching position from object to numeric </span>
-<span class="n">results</span><span class="p">[</span><span class="s2">"position"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"position"</span><span class="p">],</span> 
-                                    <span class="n">errors</span><span class="o">=</span> <span class="s1">'coerce'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"laps"</span><span class="p">])</span>
 
 <span class="n">df_aggCon_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"constructorId"</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'position'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">),</span>
-                      <span class="n">sd</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'position'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">)))</span>
+                 <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'laps'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">),</span>
+                      <span class="n">sd</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'laps'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">)))</span>
 
 
 <span class="n">sortedval</span> <span class="o">=</span> <span class="n">df_aggCon_pos</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">"mean"</span><span class="p">,</span> 
@@ -15267,18 +15263,18 @@ order of mean laps using ".sort_values()"</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>0         1
-1         2
-2         3
-3         4
-4         5
+<pre>0        58
+1        58
+2        58
+3        58
+4        58
          ..
-25835    16
-25836    17
-25837    18
-25838    19
-25839    \N
-Name: position, Length: 25840, dtype: object</pre>
+25835    57
+25836    57
+25837    55
+25838    55
+25839    27
+Name: laps, Length: 25840, dtype: int64</pre>
 </div>
 
 </div>
@@ -15320,29 +15316,29 @@ Name: position, Length: 25840, dtype: object</pre>
   </thead>
   <tbody>
     <tr>
-      <th>160</th>
-      <td>24.000000</td>
-      <td>NaN</td>
+      <th>149</th>
+      <td>198.500000</td>
+      <td>2.121320</td>
     </tr>
     <tr>
-      <th>116</th>
-      <td>23.333333</td>
-      <td>7.767453</td>
+      <th>112</th>
+      <td>197.000000</td>
+      <td>4.242641</td>
     </tr>
     <tr>
-      <th>159</th>
-      <td>23.000000</td>
-      <td>NaN</td>
+      <th>109</th>
+      <td>184.285714</td>
+      <td>32.912583</td>
     </tr>
     <tr>
-      <th>158</th>
-      <td>22.000000</td>
-      <td>NaN</td>
+      <th>119</th>
+      <td>178.666667</td>
+      <td>36.950417</td>
     </tr>
     <tr>
-      <th>164</th>
-      <td>18.987342</td>
-      <td>2.519125</td>
+      <th>108</th>
+      <td>163.764706</td>
+      <td>63.148168</td>
     </tr>
     <tr>
       <th>...</th>
@@ -15350,29 +15346,29 @@ Name: position, Length: 25840, dtype: object</pre>
       <td>...</td>
     </tr>
     <tr>
-      <th>184</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>186</th>
-      <td>NaN</td>
+      <th>93</th>
+      <td>0.000000</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>193</th>
-      <td>NaN</td>
+      <th>61</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>0.000000</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>197</th>
-      <td>NaN</td>
+      <th>91</th>
+      <td>0.000000</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203</th>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>74</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
     </tr>
   </tbody>
 </table>
@@ -15416,6 +15412,12 @@ as "df_subAggCon_pos"</li>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write your own code</span>
+
+
+<span class="c1"># Switching position from object to numeric </span>
+<span class="n">results</span><span class="p">[</span><span class="s2">"position"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"position"</span><span class="p">],</span> 
+                                    <span class="n">errors</span><span class="o">=</span> <span class="s1">'coerce'</span><span class="p">)</span>
+
 
 <span class="n">df_subAggCon_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"raceId &gt;= 150"</span><span class="p">)</span>
                        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"constructorId"</span><span class="p">)</span>
