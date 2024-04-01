@@ -36,7 +36,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@postgres
+-- Active: 1710903290079@@127.0.0.1@5432@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
 -- System commands are in upper case and user defined
@@ -69,7 +69,7 @@ Add rows to table
 -- You write system commands in capital letters to easily distinguish
 -- column names from system commands
 
-INSERT INTO drivers  VALUES (1, 'Lewis Hamilton','British',103);
+INSERT INTO drivers VALUES (1, 'Lewis Hamilton','British',103);
 
 INSERT INTO drivers  VALUES (4, 'Fernando Alonso', 'Spanish',32);
 
@@ -103,6 +103,8 @@ Try it yourself!
 INSERT INTO drivers VALUES (5, 'Max Verstappen', 'Dutch', 51);
 INSERT INTO drivers VALUES (6, 'Juan Pablo Montoya', 'Colombian', 6);
 
+INSERT INTO drivers VALUES (7, 'Alejandro Sanchez Becerra','Colombian',2000);
+
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
 
@@ -133,11 +135,11 @@ WHERE nationality = 'German';
 
 -- Evalute OR conditions
 SELECT * FROM drivers
-WHERE nationality = 'United States';
+WHERE (nationality = 'Colombian') OR (nationality = 'German');
 
 -- Evaluate AND conditions
 SELECT * FROM drivers
-WHERE (driver_id = 2);
+WHERE (nationality = 'German') AND (driver_id = 3) ;
 
 -- SQLBook: Markup
 <font size="5"> 
