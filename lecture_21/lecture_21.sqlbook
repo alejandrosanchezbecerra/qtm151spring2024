@@ -1,0 +1,44 @@
+-- SQLBook: Markup
+# <span style="color:darkblue"> Lecture 21 - Practicing SQL queries </span>
+
+<font size = "5">
+
+In  this lecture we will practice SQL commands (often) <br>
+called "SQL queries"
+
+- There will be a quiz on this lecture
+-- SQLBook: Markup
+# <span style="color:darkblue"> I. Review of SQL commands </span>
+
+-- SQLBook: Markup
+<font size = "5">
+
+Basic Syntax
+-- SQLBook: Code
+-- Commands separated by a semicolon ";"
+-- Commands in upper case, inputs lower case
+-- Include comments with two dashes "--"
+-- Arguments in parenthesis, separated by a comma ","
+-- For strings, use single quotations '...', not double "...".
+-- SQLBook: Markup
+<font size = "5">
+
+Data extraction
+-- SQLBook: Code
+-- All of the data extraction start with a SELECT ... FROM
+-- which has the following form
+-- The "*" is used to denote all the columns 
+
+--             SELECT * FROM datasetname
+--             SELECT colname1, colname2 FROM datasetname
+-- SQLBook: Markup
+<font size = "5">
+
+Data manipulation
+
+```GROUP BY``` $\qquad \qquad \qquad  $: Grouped operations <br>
+```ORDER BY .... ASC```  $\qquad $: Sort dataset in ascending order <br>
+```ORDER BY .... DSC```  $\qquad $: Sort dataset in descending order <br>
+```WHERE ```  $\qquad \qquad \qquad \quad \ $: Subsetting rows based on original columns<br>
+```HAVING ``` $\qquad \qquad \qquad \ \ \ $: Subsetting rows based on aggregate statistics <br>
+```LEFT JOIN ... ON ...``` $ \ \ \ $: Replacing values
