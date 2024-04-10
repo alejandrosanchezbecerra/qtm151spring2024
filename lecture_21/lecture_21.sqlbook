@@ -15,6 +15,7 @@ called "SQL queries"
 
 Basic Syntax
 -- SQLBook: Code
+-- Active: 1710963794892@@127.0.0.1@5432@postgres
 -- Commands separated by a semicolon ";"
 -- Commands in upper case, inputs lower case
 -- Include comments with two dashes "--"
@@ -25,6 +26,7 @@ Basic Syntax
 
 Data extraction
 -- SQLBook: Code
+-- Active: 1710963794892@@127.0.0.1@5432@postgres
 -- All of the data extraction start with a SELECT ... FROM
 -- which has the following form
 -- The "*" is used to denote all the columns 
