@@ -24,11 +24,8 @@ panel on the left:
 
 <span style="color:red"> Common pitfall: </span>
 
-- Make sure to click on the "localhost" tab 
-- If you don't, you won't be able to run the code
-
-
-<img src="figures/serverconnection_sql_vscode-3.png" alt="drawing" width="300"/>
+- In each code chunk you will see a button that says <br>
+"Active Connection". Select that to run the code
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Create SQL Table from Scratch </span>
 -- SQLBook: Markup
