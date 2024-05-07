@@ -1,0 +1,194 @@
+-- SQLBook: Markup
+# Assignment 8
+-- SQLBook: Markup
+## Submit this file. No need to convert to HTML
+-- SQLBook: Markup
+<font size = "5">
+Add a comment with your Emory ID below
+
+(just add your name as an SQL comment, <br>
+do not use print())
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+-- Write your own code
+
+# Instructor Copy
+-- 2484403
+-- Martinez Jean Claude
+-- SQLBook: Markup
+<font size = "5">
+
+Before starting, run the following code
+
+- Make sure you review the lecture for how to setup SQL <br>
+and select an active connection.
+
+- This creates a table of data in SQL for questions (a)-(d). <br>
+You need to run "Execute" on each row, line-by-line. This is <br>
+different from Python, which runs the entire chunk.
+
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+
+DROP TABLE IF EXISTS homework_data;
+CREATE TABLE homework_data(driver_id int,
+    driver_name varchar(30),
+    nationality varchar(15),
+    lap_times int);
+
+INSERT INTO homework_data  VALUES (1, 'Simon Cowell','British',74);
+INSERT INTO homework_data  VALUES (2, 'Fernando Alonso', 'Spanish',26);
+INSERT INTO homework_data  VALUES (3, 'Heinrich Bach', 'German',82);
+INSERT INTO homework_data  VALUES (4, 'Giorgio Soprano', 'Spanish',87);
+INSERT INTO homework_data  VALUES (5, 'Lewis Hamilton','British',103);
+INSERT INTO homework_data  VALUES (6, 'Henry Louvre', 'British',32);
+INSERT INTO homework_data  VALUES (7, 'Sebastian Vettel', 'German',91);
+INSERT INTO homework_data  VALUES (8, 'Lukas Zech', 'German',53);
+INSERT INTO homework_data  VALUES (9, 'Donic Kovak','German',11);
+INSERT INTO homework_data  VALUES (10, 'Michael Holzmieter', 'German',24);
+-- SQLBook: Markup
+<font size="5"> 
+
+Double check that the 10 entries were entered correctly <br>
+by viewing the table in the VSC "Database" Panel
+
+$\qquad$ <img src="figures/output_sql_table.png" alt="drawing" width="350"/>
+
+Check Lecture 16 for how to view the table
+
+-- SQLBook: Markup
+<font size = "5">
+
+(a) Subset and sort
+
+<font size = "3">
+
+- Use ```WHERE``` to get a subset of "homework_data" to subset <br>
+drivers whose nationality is British.
+- Chain this with ```ORDER BY driver_name ASC``` to sort in <br>
+ascending order
+
+Hints:
+
+- Remember you need to connect to ```homework_data```
+- Remember to start the chain with ```SELECT * FROM homework_data```
+- In SQL you only need a single equality "="
+- In SQL use single quotes for logical conditions with strings '...'
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+-- Write your own code
+
+SELECT * FROM homework_data
+WHERE nationality = 'British'
+ORDER BY driver_name ASC
+
+-- SQLBook: Markup
+<font size = "5">
+
+(b) Count unique values
+
+<font size = "3">
+
+- Count the number of unique nationalities using ```COUNT(DISTINCT ...)``` <br>
+and the total number of rows with ```COUNT```, <br>
+from the dataset "homework_data" <br>
+- To get full points, set a clear variable name using an <br>
+alies, e.g. ``` ... AS ... ```
+
+
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+-- Write your own code
+
+SELECT
+COUNT(DISTINCT nationality) AS unique_nationalities,
+COUNT(*) AS total_row 
+FROM homework_data;
+
+
+
+
+-- SQLBook: Markup
+<font size = "5">
+
+(c) Groupby + Aggregate + Sort
+
+<font size = "3">
+
+- Obtain the average of "lap_times" by "driverId" using ```GROUP BY```
+- Use ```ORDER BY ``` to sort by the average of "lap_times"
+
+HINT: See the end of lectures 16 for details <br>
+
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+-- Write your own code
+SELECT driver_id,
+    AVG(lap_times) AS mean_laptimes
+FROM homework_data
+GROUP BY driver_id
+ORDER BY mean_laptimes;
+
+
+
+-- SQLBook: Markup
+<font size = "5">
+
+(d) Groupby + Aggregate + Sort
+
+<font size = "3">
+
+- Obtain the sum of "lap_times" by nationality using ```GROUP BY```
+- Use ```HAVING ``` to filter nationalities with a sum <br>
+of lap times strictly higher than 150
+
+HINT: See the end of lecture 16 for details <br>
+HINT: Use ```HAVING SUM(lap_times)``` rather than an alias <br>
+for the code to work correctly.
+
+-- SQLBook: Code
+
+# Write your own code
+SELECT nationality, 
+    SUM(lap_times) AS total_laptimes
+FROM homework_data
+GROUP BY nationality
+HAVING SUM(lap_times) > 150;
+
+
+-- SQLBook: Markup
+<font size = "5">
+
+(e) Create Your Own Table and Perform Operations
+
+<font size = "3">
+
+- Drop the table ```lap_times``` if it already exists
+- Create a new table ```lap_times``` with the following fields
+- To get full times, exactly replicate the upper case/lower <br>
+ case letters  HINT: By default SQL only lets you enter <br>
+ lower case letters. However, you can enter names with double <br>
+ quotations, e.g. "driverId"
+ - INSERT row of data (invent the valus)
+
+$\qquad$ <img src="figures/codebook_lap_times.png" alt="drawing" width="350"/>
+
+HINT: See the lecture 16 for details <br>
+HINT: To insert a string value, use 'single quotations'
+
+-- SQLBook: Code
+-- Active: 1710938422579@@127.0.0.1@5432@postgres
+-- Write your own code
+
+DROP TABLE IF EXISTS lap_times;
+
+CREATE TABLE lap_times(
+    "raceId" int,
+    "driverId" int,
+    lap int, 
+    position int,
+    time varchar(255),
+    milliseconds int
+);
+
+INSERT INTO lap_times  VALUES (21, 1287, 204, 2, '1:15.350',75350);

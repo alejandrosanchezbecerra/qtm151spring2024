@@ -121,6 +121,7 @@ Extract all columns from table
 -- SQLBook: Code
 -- The symbol "*" is a shorthand for "all variables"
 SELECT * FROM drivers;
+
 -- SQLBook: Markup
 <font size = "5">
 
